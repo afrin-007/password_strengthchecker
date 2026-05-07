@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Secure Password Generator</h2>
+    <button onclick="generatePassword()" class="btn">Generate</button>
+    <p id="generated"></p>
+</div>
+<script>
+async function generatePassword(){
+    const res = await fetch('/generate-password');
+    const data = await res.json();
+    document.getElementById('generated').innerText = data.password;
+}
+</script>
+</body>
+</html>

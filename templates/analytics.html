@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="card">
+
+        <h1>📊 Password Analytics</h1>
+        <p class="subtitle">Strength distribution of passwords</p>
+
+        <canvas id="chart"></canvas>
+
+        <a href="/dashboard" class="btn">⬅ Back</a>
+
+    </div>
+
+</div>
+
+<script>
+const ctx = document.getElementById('chart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ scores | safe }},
+        datasets: [{
+            label: 'Password Count',
+            data: {{ counts | safe }},
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: "#ffffff"
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: "#ffffff" }
+            },
+            y: {
+                ticks: { color: "#ffffff" }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

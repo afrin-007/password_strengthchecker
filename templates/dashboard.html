@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecurePass Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="card">
+        <h1>🔐 SecurePass Analyzer</h1>
+        <p class="subtitle">Check your password strength instantly</p>
+
+        <form action="/analyze-page" method="POST">
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Check Strength</button>
+        </form>
+
+        <div class="links">
+            <a href="/generator">Generate Password</a>
+            <a href="/analytics">View Analytics</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
